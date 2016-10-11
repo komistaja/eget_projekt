@@ -1,31 +1,31 @@
 <?php
-//Sparar server-data i variablar
-$db_user = 'olof'; //databas(DB) användarnamn
-$db_pass = 'olof'; //DB lösenord
-$db_host = 'localhost'; //DB serveradress/namn
+// server data variables
+$db_user = 'olof'; //DB username
+$db_pass = 'olof'; //DB password
+$db_host = 'localhost'; //DB serveraddress
 
-$db = 'olofseuranta'; //Databasens namn
+$db = 'olofseuranta'; //Database name
 
 /*
-Kontaktar databasen med mysqli_connect()-funktionen 
-och sparar i en variabel $link 
+Contact DB with mysqli_connect() 
+output to $link 
 */
 $link = mysqli_connect($db_host, $db_user, $db_pass);
 
-//Testar kontakten till databasen
+//Test DB connection
 if(!$link){
-	echo "Kunde inte kontakta databasen <br>" . mysqli_error($link);
-	exit(); //stoppar koden
-}
-
-if(!mysqli_set_charset($link, 'UTF8')) {
-	echo "Kunde inte ställa in UTF-8";
+	echo "Tietokantayhteys ei toimi <br>" . mysqli_error($link);
 	exit();
 }
 
-//Väljer DB
+// change DB charset
+if(!mysqli_set_charset($link, 'UTF8')) {
+	exit();
+}
+
+//select DB
 if(!mysqli_select_db($link, $db)) {
-	echo "Kunde inte välja databasen $db <br>" . mysqli_error($link);
+	echo "Tietokantaan $db ei yhteyttä <br>" . mysqli_error($link);
 	exit();
 }
 ?>
