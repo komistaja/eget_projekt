@@ -3,64 +3,47 @@ include('dbconnect.php');  // database connectionhandler
 
 $thisPage = "Output"; // pagevariable for nav.php
 
-// Mysql query for ingredient where feelcount per ingredient amount
-$aines = "vehna";  // variable for ingredient input
-$base_q = "SELECT COUNT(feel.feel) FROM jannyholm LEFT JOIN feel ON jannyholm.date = DATE_ADD(feel.date, INTERVAL 1 DAY) WHERE jannyholm.";
-$q_output_feel_count = "SELECT COUNT(feel.feel) AS feel0, ($base_q$aines = 1) AS feel1, ($base_q$aines = 2) AS feel2, ($base_q$aines = 3) AS feel3
-FROM jannyholm
-LEFT JOIN feel ON jannyholm.date = DATE_ADD(feel.date, INTERVAL 1 DAY)
-WHERE jannyholm.$aines = 0;";
-
-$r_output_feel = mysqli_query($link, $q_output_feel_count);
-$output_vehna_feel = mysqli_fetch_array($r_output_feel);
 
 
-// Query for ingredient 2
-$aines = "ruis";
-$base_q = "SELECT COUNT(feel.feel) FROM jannyholm LEFT JOIN feel ON jannyholm.date = DATE_ADD(feel.date, INTERVAL 1 DAY) WHERE jannyholm.";
-$q_output_feel_count = "SELECT COUNT(feel.feel) AS feel0, ($base_q$aines = 1) AS feel1, ($base_q$aines = 2) AS feel2, ($base_q$aines = 3) AS feel3
-FROM jannyholm
-LEFT JOIN feel ON jannyholm.date = DATE_ADD(feel.date, INTERVAL 1 DAY)
-WHERE jannyholm.$aines = 0;";
 
-$r_output_feel = mysqli_query($link, $q_output_feel_count);
-$output_ruis_feel = mysqli_fetch_array($r_output_feel);
+// Query for ingredients avg by feel
+$qByFeel = 'SELECT ROUND(SUM(jannyholm.soija) / COUNT(NULLIF(jannyholm.soija, 0)), 1) AS soija, ROUND(SUM(jannyholm.vehna) / COUNT(NULLIF(jannyholm.vehna, 0)), 1) AS vehna, ROUND(SUM(jannyholm.pavut) / COUNT(NULLIF(jannyholm.pavut, 0)), 1) AS pavut, ROUND(AVG(jannyholm.ruis) / COUNT(NULLIF(jannyholm.ruis, 0)), 1) AS ruis, ROUND(AVG(jannyholm.chili) / COUNT(NULLIF(jannyholm.chili, 0)), 1) AS chili, feelref.feelname FROM jannyholm RIGHT JOIN feel ON jannyholm.date = DATE_ADD(feel.date, INTERVAL -1 DAY) JOIN feelref on feel.feel = feelref.feel GROUP BY feel.feel';
 
+$rOutputByFeel = mysqli_query($link, $qByFeel);  // mysqli result for ingredients avg by feel
 
-// Query for ingredient 3
-$aines = "soija";
-$base_q = "SELECT COUNT(feel.feel) FROM jannyholm LEFT JOIN feel ON jannyholm.date = DATE_ADD(feel.date, INTERVAL 1 DAY) WHERE jannyholm.";
-$q_output_feel_count = "SELECT COUNT(feel.feel) AS feel0, ($base_q$aines = 1) AS feel1, ($base_q$aines = 2) AS feel2, ($base_q$aines = 3) AS feel3
-FROM jannyholm
-LEFT JOIN feel ON jannyholm.date = DATE_ADD(feel.date, INTERVAL 1 DAY)
-WHERE jannyholm.$aines = 0;";
-
-$r_output_feel = mysqli_query($link, $q_output_feel_count);
-$output_soija_feel = mysqli_fetch_array($r_output_feel);
+// Query for avg feel by ingredient
+$qIngredient = 'vehna';
+$qByIng = 'SELECT ROUND(AVG(feel.feel), 1) AS ' . $qIngredient . 'feel FROM jannyholm JOIN feel ON jannyholm.date = DATE_ADD(feel.date, INTERVAL -1 DAY) RIGHT JOIN feelref ON feel.feel = feelref.feel GROUP BY jannyholm.' . $qIngredient;
 
 
-// Query for ingredient 4
-$aines = "pavut";
-$base_q = "SELECT COUNT(feel.feel) FROM jannyholm LEFT JOIN feel ON jannyholm.date = DATE_ADD(feel.date, INTERVAL 1 DAY) WHERE jannyholm.";
-$q_output_feel_count = "SELECT COUNT(feel.feel) AS feel0, ($base_q$aines = 1) AS feel1, ($base_q$aines = 2) AS feel2, ($base_q$aines = 3) AS feel3
-FROM jannyholm
-LEFT JOIN feel ON jannyholm.date = DATE_ADD(feel.date, INTERVAL 1 DAY)
-WHERE jannyholm.$aines = 0;";
+$rOutputFeelVehna = mysqli_query($link, $qByIng);
 
-$r_output_feel = mysqli_query($link, $q_output_feel_count);
-$output_pavut_feel = mysqli_fetch_array($r_output_feel);
+// Q for avg feel by ingredient 2
+$qIngredient = 'soija';
+$qByIng = 'SELECT ROUND(AVG(feel.feel), 1) AS ' . $qIngredient . 'feel FROM jannyholm JOIN feel ON jannyholm.date = DATE_ADD(feel.date, INTERVAL -1 DAY) RIGHT JOIN feelref ON feel.feel = feelref.feel GROUP BY jannyholm.' . $qIngredient;
+
+$rOutputFeelSoija = mysqli_query($link, $qByIng);
+
+// Q for avg feel by ingredient 3
+$qIngredient = 'pavut';
+$qByIng = 'SELECT ROUND(AVG(feel.feel), 1) AS ' . $qIngredient . 'feel FROM jannyholm JOIN feel ON jannyholm.date = DATE_ADD(feel.date, INTERVAL -1 DAY) RIGHT JOIN feelref ON feel.feel = feelref.feel GROUP BY jannyholm.' . $qIngredient;
+
+$rOutputFeelPavut = mysqli_query($link, $qByIng);
 
 
-// Query for ingredient 5
-$aines = "chili";
-$base_q = "SELECT COUNT(feel.feel) FROM jannyholm LEFT JOIN feel ON jannyholm.date = DATE_ADD(feel.date, INTERVAL 1 DAY) WHERE jannyholm.";
-$q_output_feel_count = "SELECT COUNT(feel.feel) AS feel0, ($base_q$aines = 1) AS feel1, ($base_q$aines = 2) AS feel2, ($base_q$aines = 3) AS feel3
-FROM jannyholm
-LEFT JOIN feel ON jannyholm.date = DATE_ADD(feel.date, INTERVAL 1 DAY)
-WHERE jannyholm.$aines = 0;";
+// Q for avg feel by ingredient 4
+$qIngredient = 'ruis';
+$qByIng = 'SELECT ROUND(AVG(feel.feel), 1) AS ' . $qIngredient . 'feel FROM jannyholm JOIN feel ON jannyholm.date = DATE_ADD(feel.date, INTERVAL -1 DAY) RIGHT JOIN feelref ON feel.feel = feelref.feel GROUP BY jannyholm.' . $qIngredient;
 
-$r_output_feel = mysqli_query($link, $q_output_feel_count);
-$output_chili_feel = mysqli_fetch_array($r_output_feel);
+$rOutputFeelRuis = mysqli_query($link, $qByIng);
+
+
+// Q for avg feel by ingredient 5
+$qIngredient = 'chili';
+$qByIng = 'SELECT ROUND(AVG(feel.feel), 1) AS ' . $qIngredient . 'feel FROM jannyholm JOIN feel ON jannyholm.date = DATE_ADD(feel.date, INTERVAL -1 DAY) RIGHT JOIN feelref ON feel.feel = feelref.feel GROUP BY jannyholm.' . $qIngredient;
+
+$rOutputFeelChili = mysqli_query($link, $qByIng);
+
 
 include('head.php');
 ?>
@@ -76,60 +59,98 @@ include('head.php');
     <div class="col-md-6">
         <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">Osumataulukko</h3>
+    <h3 class="panel-title">Vointi ainesten mukaan</h3>
   </div>
   <div class="panel-body">
-    <table>
+    <table class="table">
         <!-- print values from output.php querys -->
 	<tr>
-		<th>Aines</th>
-		<th>Ei</th>
-		<th>Vähän</th>
-		<th>Reippasti</th>
-		<th>Todella paljon</th>
+		<th>Vointi</th>
+		<th>Soijarouhe</th>
+		<th>Vehnä</th>
+		<th>Pavut</th>
+		<th>Ruis</th>
+		<th>Chili</th>
 	</tr>
 	<tr>
-		<td>Vehnä</td>
-		<td><?php echo $output_vehna_feel['feel0']; ?></td>
-		<td><?php echo $output_vehna_feel['feel1']; ?></td>
-		<td><?php echo $output_vehna_feel['feel2']; ?></td>
-		<td><?php echo $output_vehna_feel['feel3']; ?></td>
 		
-	</tr>
-    <tr>
-		<td>Soija</td>
-		<td><?php echo $output_soija_feel['feel0']; ?></td>
-		<td><?php echo $output_soija_feel['feel1']; ?></td>
-		<td><?php echo $output_soija_feel['feel2']; ?></td>
-		<td><?php echo $output_soija_feel['feel3']; ?></td>
+<?php 
+        while($row = mysqli_fetch_assoc($rOutputByFeel)) {
+            echo '<tr><td>' . $row['feelname'] . '</td><td class="td1">' . $row['soija'] . '</td><td class="td1">' . $row['vehna'] . '</td><td class="td1">' . $row['pavut'] . '</td><td class="td1">' . $row['ruis'] . '</td><td class="td1">' . $row['chili'] . '</td></tr>';
+        }
+?>
     </tr>
-    <tr>
-		<td>Pavut</td>
-		<td><?php echo $output_pavut_feel['feel0']; ?></td>
-		<td><?php echo $output_pavut_feel['feel1']; ?></td>
-		<td><?php echo $output_pavut_feel['feel2']; ?></td>
-		<td><?php echo $output_pavut_feel['feel3']; ?></td>
-		
-	</tr>
-	<tr>
-		<td>Ruis</td>
-		<td><?php echo $output_ruis_feel['feel0']; ?></td>
-		<td><?php echo $output_ruis_feel['feel1']; ?></td>
-		<td><?php echo $output_ruis_feel['feel2']; ?></td>
-		<td><?php echo $output_ruis_feel['feel3']; ?></td>
-		
-	</tr>
-    <tr>
-		<td>Chili</td>
-		<td><?php echo $output_chili_feel['feel0']; ?></td>
-		<td><?php echo $output_chili_feel['feel1']; ?></td>
-		<td><?php echo $output_chili_feel['feel2']; ?></td>
-		<td><?php echo $output_chili_feel['feel3']; ?></td>
-		
-	</tr>
-	</table>
+    </table>
   </div>
 </div>
+        <div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Oireet syödyn aineksen määrän mukaan</h3>
+  </div>
+  <div class="panel-body">
+    
+    <table class="table">
+        <tr>
+            <th>Aines</th>
+            <th>Ei</th>
+            <th>Vähän</th>
+            <th>Kohtuudella</th>
+            <th>Paljon</th>
+        </tr>
+        <tr>
+            <td>Vehnä</td>
+            <?php
+            while($row = mysqli_fetch_assoc($rOutputFeelVehna)) {
+                if($row['vehnafeel'] < 2) { echo '<td class="goodfeel">Hyvä</td>'; }
+                if($row['vehnafeel'] >= 2 && $row['vehnafeel'] < 3) { echo '<td class="okfeel">Ok</td>'; }
+                if($row['vehnafeel'] >= 3) { echo '<td class="badfeel">Huono</td>'; };
+            } ?>
+        </tr>
+        <tr>
+            <td>Soijarouhe</td>
+<?php
+            while($row = mysqli_fetch_assoc($rOutputFeelSoija)) {
+                if($row['soijafeel'] < 2) { echo '<td class="goodfeel">Hyvä</td>'; }
+                if($row['soijafeel'] >= 2 && $row['soijafeel'] < 3) { echo '<td class="okfeel">Ok</td>'; }
+                if($row['soijafeel'] >= 3) { echo '<td class="badfeel">Huono</td>'; };
+            
+            }
+?>
+        </tr>
+        <tr>
+            <td>Pavut</td>
+<?php
+            while($row = mysqli_fetch_assoc($rOutputFeelPavut)) {
+                if($row['pavutfeel'] < 2) { echo '<td class="goodfeel">Hyvä</td>'; }
+                if($row['pavutfeel'] >= 2 && $row['pavutfeel'] < 3) { echo '<td class="okfeel">Ok</td>'; }
+                if($row['pavutfeel'] >= 3) { echo '<td class="badfeel">Huono</td>'; };
+            }
+?>
+        </tr>
+        <tr>
+            <td>Ruis</td>
+<?php
+            while($row = mysqli_fetch_assoc($rOutputFeelRuis)) {
+                if($row['ruisfeel'] < 2) { echo '<td class="goodfeel">Hyvä</td>'; }
+                if($row['ruisfeel'] >= 2 && $row['ruisfeel'] < 3) { echo '<td class="okfeel">Ok</td>'; }
+                if($row['ruisfeel'] >= 3) { echo '<td class="badfeel">Huono</td>'; };
+            }
+?>
+        </tr>
+        <tr>
+            <td>Chili/tuliset</td>
+<?php
+            while($row = mysqli_fetch_assoc($rOutputFeelChili)) {
+                if($row['chilifeel'] < 2) { echo '<td class="goodfeel">Hyvä</td>'; }
+                if($row['chilifeel'] >= 2 && $row['chilifeel'] < 3) { echo '<td class="okfeel">Ok</td>'; }
+                if($row['chilifeel'] >= 3) { echo '<td class="badfeel">Huono</td>'; };
+            }
+?>
+        </tr>
+    </table>
+  </div>
+</div>
+        
       
     </div>
     <div class="col-md-6">
@@ -140,6 +161,16 @@ include('head.php');
 
 </div><!-- end .container -->
 <?php include('footer-scripts.php'); ?>
-
+<!-- script for <td> -->
+<script>
+var td1 = document.getElementsByClassName("td1");
+var i = 0;
+while(i < td1.length) {
+    if(td1[i].innerHTML <= 1) { td1[i].style.backgroundColor = "green"; }
+    if(td1[i].innerHTML > 1 && td1[i].innerHTML <= 2) { td1[i].style.backgroundColor = "yellow"; }
+    if(td1[i].innerHTML > 2 && td1[i].innerHTML <= 3) { td1[i].style.backgroundColor = "red"; }
+    i++;
+}
+</script>
 </body>
 </html> <!-- from head.php -->
