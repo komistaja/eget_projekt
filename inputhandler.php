@@ -10,8 +10,8 @@ if(isset($_POST['save'])) {
 	$chili = $_POST['chili'];
 	$fiilis = $_POST['fiilis'];
 	
-	$q_insert = "INSERT INTO jannyholm (date, vehna, soija, pavut, ruis, chili, feel) 
-	VALUES ('$date', '$vehna', '$soija', '$pavut','$ruis', '$chili', '$fiilis');";
+	$q_insert = "INSERT INTO jannyholm (date, vehna, soija, pavut, ruis, chili) 
+	VALUES ('$date', '$vehna', '$soija', '$pavut','$ruis', '$chili');";
 	$q_insert_feel = "INSERT INTO feel (date, feel) VALUES ('$date', '$fiilis');";
 	if(!mysqli_query($link, $q_insert)) {
 		$output = "Rivin lisäys ei onnistunut";

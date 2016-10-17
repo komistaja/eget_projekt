@@ -23,10 +23,10 @@ if(isset($output)) { echo $output; }  // ouput for dbconnect.php database connec
             <input id="date" name="date" type="date" class="form-control" value="<?php echo date('Y-m-d'); ?>" >
             <span class="input-group-addon" id="basic-addon1">Olo</span>
                 <select type="text" name="fiilis" id="fiilis" class="form-control" aria-describedby="basic-addon1">
-                <option value="0">Hyvä</option>
-				<option value="1">Ok</option>
-                <option value="2">Huono</option>
-                <option value="3">Todella huono</option>
+                <option value="1">Hyvä</option>
+				<option value="2">Ok</option>
+                <option value="3">Huono</option>
+                <option value="4">Todella huono</option>
                 </select>
         </div>
        

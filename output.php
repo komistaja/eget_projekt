@@ -9,7 +9,7 @@ $base_q = "SELECT COUNT(feel.feel) FROM jannyholm LEFT JOIN feel ON jannyholm.da
 $q_output_feel_count = "SELECT COUNT(feel.feel) AS feel0, ($base_q$aines = 1) AS feel1, ($base_q$aines = 2) AS feel2, ($base_q$aines = 3) AS feel3
 FROM jannyholm
 LEFT JOIN feel ON jannyholm.date = DATE_ADD(feel.date, INTERVAL 1 DAY)
-WHERE jannyholm.vehna = 0;";
+WHERE jannyholm.$aines = 0;";
 
 $r_output_feel = mysqli_query($link, $q_output_feel_count);
 $output_vehna_feel = mysqli_fetch_array($r_output_feel);
@@ -21,7 +21,7 @@ $base_q = "SELECT COUNT(feel.feel) FROM jannyholm LEFT JOIN feel ON jannyholm.da
 $q_output_feel_count = "SELECT COUNT(feel.feel) AS feel0, ($base_q$aines = 1) AS feel1, ($base_q$aines = 2) AS feel2, ($base_q$aines = 3) AS feel3
 FROM jannyholm
 LEFT JOIN feel ON jannyholm.date = DATE_ADD(feel.date, INTERVAL 1 DAY)
-WHERE jannyholm.vehna = 0;";
+WHERE jannyholm.$aines = 0;";
 
 $r_output_feel = mysqli_query($link, $q_output_feel_count);
 $output_ruis_feel = mysqli_fetch_array($r_output_feel);
@@ -33,7 +33,7 @@ $base_q = "SELECT COUNT(feel.feel) FROM jannyholm LEFT JOIN feel ON jannyholm.da
 $q_output_feel_count = "SELECT COUNT(feel.feel) AS feel0, ($base_q$aines = 1) AS feel1, ($base_q$aines = 2) AS feel2, ($base_q$aines = 3) AS feel3
 FROM jannyholm
 LEFT JOIN feel ON jannyholm.date = DATE_ADD(feel.date, INTERVAL 1 DAY)
-WHERE jannyholm.vehna = 0;";
+WHERE jannyholm.$aines = 0;";
 
 $r_output_feel = mysqli_query($link, $q_output_feel_count);
 $output_soija_feel = mysqli_fetch_array($r_output_feel);
@@ -45,7 +45,7 @@ $base_q = "SELECT COUNT(feel.feel) FROM jannyholm LEFT JOIN feel ON jannyholm.da
 $q_output_feel_count = "SELECT COUNT(feel.feel) AS feel0, ($base_q$aines = 1) AS feel1, ($base_q$aines = 2) AS feel2, ($base_q$aines = 3) AS feel3
 FROM jannyholm
 LEFT JOIN feel ON jannyholm.date = DATE_ADD(feel.date, INTERVAL 1 DAY)
-WHERE jannyholm.vehna = 0;";
+WHERE jannyholm.$aines = 0;";
 
 $r_output_feel = mysqli_query($link, $q_output_feel_count);
 $output_pavut_feel = mysqli_fetch_array($r_output_feel);
@@ -57,7 +57,7 @@ $base_q = "SELECT COUNT(feel.feel) FROM jannyholm LEFT JOIN feel ON jannyholm.da
 $q_output_feel_count = "SELECT COUNT(feel.feel) AS feel0, ($base_q$aines = 1) AS feel1, ($base_q$aines = 2) AS feel2, ($base_q$aines = 3) AS feel3
 FROM jannyholm
 LEFT JOIN feel ON jannyholm.date = DATE_ADD(feel.date, INTERVAL 1 DAY)
-WHERE jannyholm.vehna = 0;";
+WHERE jannyholm.$aines = 0;";
 
 $r_output_feel = mysqli_query($link, $q_output_feel_count);
 $output_chili_feel = mysqli_fetch_array($r_output_feel);
@@ -82,7 +82,7 @@ include('head.php');
     <table>
         <!-- print values from output.php querys -->
 	<tr>
-		<th>Määrä</th>
+		<th>Aines</th>
 		<th>Ei</th>
 		<th>Vähän</th>
 		<th>Reippasti</th>
