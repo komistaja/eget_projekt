@@ -2,3 +2,15 @@
 main img {
     max-width: 100%;
 }
+
+td.goodfeel {
+    background-color: #1aa327;
+}
+
+td.okfeel {
+    background-color: #9ea31a;
+}
+
+td.badfeel {
+    background-color: #a32e1a;
+}

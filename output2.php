@@ -15,7 +15,34 @@ $rOutputByFeel = mysqli_query($link, $qByFeel);  // mysqli result for ingredient
 $qIngredient = 'vehna';
 $qByIng = 'SELECT ROUND(AVG(feel.feel), 1) AS ' . $qIngredient . 'feel FROM jannyholm JOIN feel ON jannyholm.date = DATE_ADD(feel.date, INTERVAL -1 DAY) RIGHT JOIN feelref ON feel.feel = feelref.feel GROUP BY jannyholm.' . $qIngredient;
 
+
 $rOutputFeelVehna = mysqli_query($link, $qByIng);
+
+// Q for avg feel by ingredient 2
+$qIngredient = 'soija';
+$qByIng = 'SELECT ROUND(AVG(feel.feel), 1) AS ' . $qIngredient . 'feel FROM jannyholm JOIN feel ON jannyholm.date = DATE_ADD(feel.date, INTERVAL -1 DAY) RIGHT JOIN feelref ON feel.feel = feelref.feel GROUP BY jannyholm.' . $qIngredient;
+
+$rOutputFeelSoija = mysqli_query($link, $qByIng);
+
+// Q for avg feel by ingredient 3
+$qIngredient = 'pavut';
+$qByIng = 'SELECT ROUND(AVG(feel.feel), 1) AS ' . $qIngredient . 'feel FROM jannyholm JOIN feel ON jannyholm.date = DATE_ADD(feel.date, INTERVAL -1 DAY) RIGHT JOIN feelref ON feel.feel = feelref.feel GROUP BY jannyholm.' . $qIngredient;
+
+$rOutputFeelPavut = mysqli_query($link, $qByIng);
+
+
+// Q for avg feel by ingredient 4
+$qIngredient = 'ruis';
+$qByIng = 'SELECT ROUND(AVG(feel.feel), 1) AS ' . $qIngredient . 'feel FROM jannyholm JOIN feel ON jannyholm.date = DATE_ADD(feel.date, INTERVAL -1 DAY) RIGHT JOIN feelref ON feel.feel = feelref.feel GROUP BY jannyholm.' . $qIngredient;
+
+$rOutputFeelRuis = mysqli_query($link, $qByIng);
+
+
+// Q for avg feel by ingredient 5
+$qIngredient = 'chili';
+$qByIng = 'SELECT ROUND(AVG(feel.feel), 1) AS ' . $qIngredient . 'feel FROM jannyholm JOIN feel ON jannyholm.date = DATE_ADD(feel.date, INTERVAL -1 DAY) RIGHT JOIN feelref ON feel.feel = feelref.feel GROUP BY jannyholm.' . $qIngredient;
+
+$rOutputFeelChili = mysqli_query($link, $qByIng);
 
 
 include('head.php');
@@ -32,10 +59,10 @@ include('head.php');
     <div class="col-md-6">
         <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">Osumataulukko</h3>
+    <h3 class="panel-title">Vointi ainesten mukaan</h3>
   </div>
   <div class="panel-body">
-    <table>
+    <table class="table">
         <!-- print values from output.php querys -->
 	<tr>
 		<th>Vointi</th>
@@ -58,17 +85,67 @@ include('head.php');
 </div>
         <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">Osumataulukko</h3>
+    <h3 class="panel-title">Oireet syödyn aineksen määrän mukaan</h3>
   </div>
   <div class="panel-body">
     
-    <table>
+    <table class="table">
         <tr>
             <th>Aines</th>
-            <th>Vointi</th>
+            <th>Ei</th>
+            <th>Vähän</th>
+            <th>Kohtuudella</th>
+            <th>Paljon</th>
         </tr>
         <tr>
-            <td></td>
+            <td>Vehnä</td>
+            <?php
+            while($row = mysqli_fetch_assoc($rOutputFeelVehna)) {
+                if($row['vehnafeel'] < 2) { echo '<td class="goodfeel">Hyvä</td>'; }
+                if($row['vehnafeel'] >= 2 && $row['vehnafeel'] < 3) { echo '<td class="okfeel">Ok</td>'; }
+                if($row['vehnafeel'] >= 3) { echo '<td class="badfeel">Huono</td>'; };
+            } ?>
+        </tr>
+        <tr>
+            <td>Soijarouhe</td>
+<?php
+            while($row = mysqli_fetch_assoc($rOutputFeelSoija)) {
+                if($row['soijafeel'] < 2) { echo '<td class="goodfeel">Hyvä</td>'; }
+                if($row['soijafeel'] >= 2 && $row['soijafeel'] < 3) { echo '<td class="okfeel">Ok</td>'; }
+                if($row['soijafeel'] >= 3) { echo '<td class="badfeel">Huono</td>'; };
+            
+            }
+?>
+        </tr>
+        <tr>
+            <td>Pavut</td>
+<?php
+            while($row = mysqli_fetch_assoc($rOutputFeelPavut)) {
+                if($row['pavutfeel'] < 2) { echo '<td class="goodfeel">Hyvä</td>'; }
+                if($row['pavutfeel'] >= 2 && $row['pavutfeel'] < 3) { echo '<td class="okfeel">Ok</td>'; }
+                if($row['pavutfeel'] >= 3) { echo '<td class="badfeel">Huono</td>'; };
+            }
+?>
+        </tr>
+        <tr>
+            <td>Ruis</td>
+<?php
+            while($row = mysqli_fetch_assoc($rOutputFeelRuis)) {
+                if($row['ruisfeel'] < 2) { echo '<td class="goodfeel">Hyvä</td>'; }
+                if($row['ruisfeel'] >= 2 && $row['ruisfeel'] < 3) { echo '<td class="okfeel">Ok</td>'; }
+                if($row['ruisfeel'] >= 3) { echo '<td class="badfeel">Huono</td>'; };
+            }
+?>
+        </tr>
+        <tr>
+            <td>Chili/tuliset</td>
+<?php
+            while($row = mysqli_fetch_assoc($rOutputFeelChili)) {
+                if($row['chilifeel'] < 2) { echo '<td class="goodfeel">Hyvä</td>'; }
+                if($row['chilifeel'] >= 2 && $row['chilifeel'] < 3) { echo '<td class="okfeel">Ok</td>'; }
+                if($row['chilifeel'] >= 3) { echo '<td class="badfeel">Huono</td>'; };
+            }
+?>
         </tr>
     </table>
   </div>
