@@ -3,6 +3,8 @@ main img {
     max-width: 100%;
 }
 
+
+/* table 2 stylin */
 td.goodfeel {
     background-color: #1aa327;
 }
@@ -14,3 +16,25 @@ td.okfeel {
 td.badfeel {
     background-color: #a32e1a;
 }
+
+
+/* form styling */
+.inputid {
+    width: 150px;
+}
+
+div.input-group {
+ width: 100%;   
+}
+
+/* footer */
+.footerdiv {
+    text-align: center;
+}
+
+/* outputchart */
+#chartcontainer div {
+    text-align: right;
+    color: #FFF;
+}
+

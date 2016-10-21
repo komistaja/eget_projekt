@@ -31,7 +31,7 @@ if(isset($output)) { echo $output; }  // ouput for dbconnect.php database connec
         </div>
        
 		<div class="input-group">
-                <span class="input-group-addon" id="basic-addon1">Vehnä</span>
+                <span class="input-group-addon inputid" id="basic-addon1">Vehnä</span>
                 <select type="text" name="vehna" id="vehna" class="form-control" aria-describedby="basic-addon1">
                 <option value="0">Ei</option>
 				<option value="1">Vähän</option>
@@ -41,7 +41,7 @@ if(isset($output)) { echo $output; }  // ouput for dbconnect.php database connec
         </div>
 		
 		<div class="input-group">
-                <span class="input-group-addon" id="basic-addon1">Soijarouhe</span>
+                <span class="input-group-addon inputid" id="basic-addon1">Soijarouhe</span>
                 <select type="text" name="soija" id="soija" class="form-control" aria-describedby="basic-addon1">
                 <option value="0">Ei</option>
 				<option value="1">Vähän</option>
@@ -51,7 +51,7 @@ if(isset($output)) { echo $output; }  // ouput for dbconnect.php database connec
         </div>
 		
 		<div class="input-group">
-                <span class="input-group-addon" id="basic-addon1">Pavut/herneet</span>
+                <span class="input-group-addon inputid" id="basic-addon1">Pavut/herneet</span>
                 <select type="text" name="pavut" id="pavut" class="form-control" aria-describedby="basic-addon1">
                 <option value="0">Ei</option>
 				<option value="1">Vähän</option>
@@ -61,7 +61,7 @@ if(isset($output)) { echo $output; }  // ouput for dbconnect.php database connec
         </div>
 		
 		<div class="input-group">
-                <span class="input-group-addon" id="basic-addon1">Ruis</span>
+                <span class="input-group-addon inputid" id="basic-addon1">Ruis</span>
                 <select type="text" name="ruis" id="ruis" class="form-control" aria-describedby="basic-addon1">
                 <option value="0">Ei</option>
 				<option value="1">Vähän</option>
@@ -71,7 +71,7 @@ if(isset($output)) { echo $output; }  // ouput for dbconnect.php database connec
         </div>
 		
 		<div class="input-group">
-                <span class="input-group-addon" id="basic-addon1">Tulinen (chili)</span>
+                <span class="input-group-addon inputid" id="basic-addon1">Tulinen (chili)</span>
                 <select type="text" name="chili" id="chili" class="form-control" aria-describedby="basic-addon1">
                 <option value="0">Ei</option>
 				<option value="1">Vähän</option>

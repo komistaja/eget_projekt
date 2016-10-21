@@ -3,6 +3,17 @@ include('dbconnect.php');  // database connectionhandler
 
 $thisPage = "Output"; // pagevariable for nav.php
 
+// Query for json array
+$qForjs = 'SELECT jannyholm.date, jannyholm.vehna, jannyholm.soija, jannyholm.pavut, jannyholm.ruis, jannyholm.chili, feel.feel FROM jannyholm LEFT JOIN feel ON jannyholm.date = DATE_ADD(feel.date, INTERVAL -1 DAY) JOIN feelref on feel.feel = feelref.feel';
+
+$rOutputjs = mysqli_query($link, $qForjs);  // mysqli result for js array
+
+$jsdata = array();
+while($row = mysqli_fetch_array($rOutputjs, MYSQLI_ASSOC)) {
+   $jsdata[] = $row;
+}
+var_dump($jsdata);
+echo "<script>var js_array = " . json_encode($jsdata) . ";</script>";  // php to json
 
 
 
@@ -10,6 +21,9 @@ $thisPage = "Output"; // pagevariable for nav.php
 $qByFeel = 'SELECT ROUND(SUM(jannyholm.soija) / COUNT(NULLIF(jannyholm.soija, 0)), 1) AS soija, ROUND(SUM(jannyholm.vehna) / COUNT(NULLIF(jannyholm.vehna, 0)), 1) AS vehna, ROUND(SUM(jannyholm.pavut) / COUNT(NULLIF(jannyholm.pavut, 0)), 1) AS pavut, ROUND(AVG(jannyholm.ruis) / COUNT(NULLIF(jannyholm.ruis, 0)), 1) AS ruis, ROUND(AVG(jannyholm.chili) / COUNT(NULLIF(jannyholm.chili, 0)), 1) AS chili, feelref.feelname FROM jannyholm RIGHT JOIN feel ON jannyholm.date = DATE_ADD(feel.date, INTERVAL -1 DAY) JOIN feelref on feel.feel = feelref.feel GROUP BY feel.feel';
 
 $rOutputByFeel = mysqli_query($link, $qByFeel);  // mysqli result for ingredients avg by feel
+
+
+
 
 // Query for avg feel by ingredient
 $qIngredient = 'vehna';
@@ -65,7 +79,7 @@ include('head.php');
     <table class="table">
         <!-- print values from output.php querys -->
 	<tr>
-		<th>Vointi</th>
+		<th onclick="ainesclick('feel')">Vointi</th>
 		<th>Soijarouhe</th>
 		<th>Vehnä</th>
 		<th>Pavut</th>
@@ -98,7 +112,7 @@ include('head.php');
             <th>Paljon</th>
         </tr>
         <tr>
-            <td>Vehnä</td>
+            <td onclick="ainesclick('vehna')">Vehnä</td>
             <?php
             while($row = mysqli_fetch_assoc($rOutputFeelVehna)) {
                 if($row['vehnafeel'] < 2) { echo '<td class="goodfeel">Hyvä</td>'; }
@@ -107,7 +121,7 @@ include('head.php');
             } ?>
         </tr>
         <tr>
-            <td>Soijarouhe</td>
+            <td onclick="ainesclick('soija')">Soijarouhe</td>
 <?php
             while($row = mysqli_fetch_assoc($rOutputFeelSoija)) {
                 if($row['soijafeel'] < 2) { echo '<td class="goodfeel">Hyvä</td>'; }
@@ -118,7 +132,7 @@ include('head.php');
 ?>
         </tr>
         <tr>
-            <td>Pavut</td>
+            <td onclick="ainesclick('pavut')">Pavut</td>
 <?php
             while($row = mysqli_fetch_assoc($rOutputFeelPavut)) {
                 if($row['pavutfeel'] < 2) { echo '<td class="goodfeel">Hyvä</td>'; }
@@ -128,7 +142,7 @@ include('head.php');
 ?>
         </tr>
         <tr>
-            <td>Ruis</td>
+            <td onclick="ainesclick('ruis')">Ruis</td>
 <?php
             while($row = mysqli_fetch_assoc($rOutputFeelRuis)) {
                 if($row['ruisfeel'] < 2) { echo '<td class="goodfeel">Hyvä</td>'; }
@@ -138,7 +152,7 @@ include('head.php');
 ?>
         </tr>
         <tr>
-            <td>Chili/tuliset</td>
+            <td onclick="ainesclick('chili')">Chili/tuliset</td>
 <?php
             while($row = mysqli_fetch_assoc($rOutputFeelChili)) {
                 if($row['chilifeel'] < 2) { echo '<td class="goodfeel">Hyvä</td>'; }
@@ -153,24 +167,17 @@ include('head.php');
         
       
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6" id="chartcontainer">
     </div>
 
 </main>
 <?php include('footer.php'); ?>
 
+
+
 </div><!-- end .container -->
 <?php include('footer-scripts.php'); ?>
-<!-- script for <td> -->
-<script>
-var td1 = document.getElementsByClassName("td1");
-var i = 0;
-while(i < td1.length) {
-    if(td1[i].innerHTML <= 1) { td1[i].style.backgroundColor = "green"; }
-    if(td1[i].innerHTML > 1 && td1[i].innerHTML <= 2) { td1[i].style.backgroundColor = "yellow"; }
-    if(td1[i].innerHTML > 2 && td1[i].innerHTML <= 3) { td1[i].style.backgroundColor = "red"; }
-    i++;
-}
-</script>
+
+<script src="js/chart.js"></script>
 </body>
 </html> <!-- from head.php -->
