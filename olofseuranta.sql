@@ -3,8 +3,8 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 17.10.2016 klo 11:59
--- Palvelimen versio: 10.1.13-MariaDB
+-- Generation Time: Oct 22, 2016 at 07:51 AM
+-- Server version: 10.1.13-MariaDB
 -- PHP Version: 7.0.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -23,19 +23,28 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Rakenne taululle `feel`
+-- Table structure for table `feel`
 --
 
-CREATE TABLE `feel` (
+CREATE TABLE IF NOT EXISTS `feel` (
   `date` date NOT NULL,
-  `feel` int(1) NOT NULL
+  `feel` int(1) NOT NULL,
+  PRIMARY KEY (`date`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Vedos taulusta `feel`
+-- RELATIONS FOR TABLE `feel`:
+--   `date`
+--       `jannyholm` -> `date`
+--   `feel`
+--       `feelref` -> `feel`
 --
 
-INSERT INTO `feel` (`date`, `feel`) VALUES
+--
+-- Dumping data for table `feel`
+--
+
+REPLACE INTO `feel` (`date`, `feel`) VALUES
 ('2016-09-30', 3),
 ('2016-10-01', 2),
 ('2016-10-02', 2),
@@ -52,24 +61,33 @@ INSERT INTO `feel` (`date`, `feel`) VALUES
 ('2016-10-13', 2),
 ('2016-10-14', 2),
 ('2016-10-15', 1),
-('2016-10-16', 1);
+('2016-10-16', 1),
+('2016-10-17', 2),
+('2016-10-18', 2),
+('2016-10-19', 3),
+('2016-10-20', 2);
 
 -- --------------------------------------------------------
 
 --
--- Rakenne taululle `feelref`
+-- Table structure for table `feelref`
 --
 
-CREATE TABLE `feelref` (
+CREATE TABLE IF NOT EXISTS `feelref` (
   `feel` int(1) NOT NULL,
-  `feelname` varchar(20) NOT NULL
+  `feelname` varchar(20) NOT NULL,
+  PRIMARY KEY (`feel`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Vedos taulusta `feelref`
+-- RELATIONS FOR TABLE `feelref`:
 --
 
-INSERT INTO `feelref` (`feel`, `feelname`) VALUES
+--
+-- Dumping data for table `feelref`
+--
+
+REPLACE INTO `feelref` (`feel`, `feelname`) VALUES
 (1, 'Hyvä'),
 (2, 'Normaali'),
 (3, 'Huono'),
@@ -78,23 +96,28 @@ INSERT INTO `feelref` (`feel`, `feelname`) VALUES
 -- --------------------------------------------------------
 
 --
--- Rakenne taululle `jannyholm`
+-- Table structure for table `jannyholm`
 --
 
-CREATE TABLE `jannyholm` (
+CREATE TABLE IF NOT EXISTS `jannyholm` (
   `date` date NOT NULL,
   `vehna` int(1) NOT NULL,
   `soija` int(1) NOT NULL,
   `pavut` int(1) NOT NULL,
   `ruis` int(1) NOT NULL,
-  `chili` int(1) NOT NULL
+  `chili` int(1) NOT NULL,
+  PRIMARY KEY (`date`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Vedos taulusta `jannyholm`
+-- RELATIONS FOR TABLE `jannyholm`:
 --
 
-INSERT INTO `jannyholm` (`date`, `vehna`, `soija`, `pavut`, `ruis`, `chili`) VALUES
+--
+-- Dumping data for table `jannyholm`
+--
+
+REPLACE INTO `jannyholm` (`date`, `vehna`, `soija`, `pavut`, `ruis`, `chili`) VALUES
 ('2016-09-30', 2, 0, 0, 2, 0),
 ('2016-10-01', 1, 0, 0, 1, 0),
 ('2016-10-02', 1, 1, 1, 1, 1),
@@ -111,29 +134,11 @@ INSERT INTO `jannyholm` (`date`, `vehna`, `soija`, `pavut`, `ruis`, `chili`) VAL
 ('2016-10-13', 0, 2, 2, 2, 1),
 ('2016-10-14', 1, 2, 2, 2, 1),
 ('2016-10-15', 0, 0, 1, 2, 1),
-('2016-10-16', 0, 0, 0, 0, 0);
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `feel`
---
-ALTER TABLE `feel`
-  ADD PRIMARY KEY (`date`);
-
---
--- Indexes for table `feelref`
---
-ALTER TABLE `feelref`
-  ADD PRIMARY KEY (`feel`);
-
---
--- Indexes for table `jannyholm`
---
-ALTER TABLE `jannyholm`
-  ADD PRIMARY KEY (`date`);
+('2016-10-16', 0, 0, 0, 0, 0),
+('2016-10-17', 2, 3, 2, 0, 1),
+('2016-10-18', 3, 2, 2, 2, 2),
+('2016-10-19', 0, 0, 3, 2, 2),
+('2016-10-20', 2, 0, 0, 2, 1);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
