@@ -18,7 +18,8 @@ function ainesclick(ing) {
     while(i < js_array.length) {  // js_array specified in output.php
         var div = document.createElement("div");
         div.innerHTML = js_array[i][ing];
-        div.setAttribute("onmouseover", "lineMouseOver()")
+        div.setAttribute("onmouseover", "lineMouseOver(this)");
+        div.setAttribute("onmouseout", "lineMouseOut(this)");
         document.getElementById("chartcontainer").appendChild(div);
         i++;
     }
@@ -40,7 +41,7 @@ function ainesclick(ing) {
         if(chartdiv[i].innerHTML == "0") {
             chartdiv[i].style.color = "black";
         }
-        chartdiv[i].style.backgroundColor = "blue";
+        chartdiv[i].style.backgroundColor = "#305899";
         i++;
     }
         
@@ -48,7 +49,20 @@ function ainesclick(ing) {
 
 //function for mouseover chartline
 function lineMouseOver(line) {
-    console.log('benis');
+    line.style.height = "30px";
+    line.style.color = "white";
+    line.style.backgroundColor = "#993071";
+    line.style.width = line.innerHTML * 120 + "px";
+    line.style.padding = "5px";
+    line.style.fontSize = "medium";
+}
+
+function lineMouseOut(line) {
+    line.style.height = "10px";
+    line.style.backgroundColor = "#305899";
+    line.style.width = line.innerHTML * 100 + "px";
+    line.style.padding = "0px";
+    line.style.fontSize = "8px";
 }
 
 // create divs for chart values
