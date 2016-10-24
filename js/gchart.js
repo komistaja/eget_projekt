@@ -18,7 +18,6 @@ function fpChart(ingred) {
         if(ingred == 'ruis') { var ingOut = 'Ruis'; }
         
         var data = new google.visualization.DataTable();
-        console.log(ingOut);
         data.addColumn('date', 'Päivä');
         data.addColumn('number', 'Vointi');
         data.addColumn('number', ingOut);
@@ -38,7 +37,10 @@ function fpChart(ingred) {
         var chartData = arrayRows();
 
         data.addRows(chartData);
-
+        
+        var lineColor = '#097138';
+        if(typeof ingOut == 'undefined') { lineColor = 'FFF'; }
+        
         var options = {
             focusTarget: 'category',
             chartArea: {
@@ -53,7 +55,7 @@ function fpChart(ingred) {
             vAxis: {
             title: 'Vointi/määrä'
             },
-            colors: ['#a52714', '#097138']
+            colors: ['#a52714', lineColor]
             };
 
         var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
