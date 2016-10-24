@@ -3,6 +3,11 @@ main img {
     max-width: 100%;
 }
 
+#indexpanel {
+    height: 268px;
+    padding-top: 34px;
+}
+
 
 /* table 2 stylin */
 td.goodfeel {

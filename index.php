@@ -16,7 +16,11 @@ if(isset($output)) { echo $output; }  // ouput for dbconnect.php database connec
 <div class="container">   
 <main class="row">
     <div class="col-md-6">
-        <h2>Input</h2>
+        <div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Input</h3>
+  </div>
+  <div class="panel-body">
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
         <div class="input-group">
             <span class="input-group-addon" id="basic-addon1">Päivämäärä</span>
@@ -31,7 +35,7 @@ if(isset($output)) { echo $output; }  // ouput for dbconnect.php database connec
         </div>
        
 		<div class="input-group">
-                <span class="input-group-addon inputid" id="basic-addon1">Vehnä</span>
+                <span class="input-group-addon inputid" id="basic-addon1" onclick="fpChart('vehna')">Vehnä</span>
                 <select type="text" name="vehna" id="vehna" class="form-control" aria-describedby="basic-addon1">
                 <option value="0">Ei</option>
 				<option value="1">Vähän</option>
@@ -41,7 +45,7 @@ if(isset($output)) { echo $output; }  // ouput for dbconnect.php database connec
         </div>
 		
 		<div class="input-group">
-                <span class="input-group-addon inputid" id="basic-addon1">Soijarouhe</span>
+                <span class="input-group-addon inputid" id="basic-addon1" onclick="fpChart('soija')">Soijarouhe</span>
                 <select type="text" name="soija" id="soija" class="form-control" aria-describedby="basic-addon1">
                 <option value="0">Ei</option>
 				<option value="1">Vähän</option>
@@ -51,7 +55,7 @@ if(isset($output)) { echo $output; }  // ouput for dbconnect.php database connec
         </div>
 		
 		<div class="input-group">
-                <span class="input-group-addon inputid" id="basic-addon1">Pavut/herneet</span>
+                <span class="input-group-addon inputid" id="basic-addon1"  onclick="fpChart('pavut')">Pavut/herneet</span>
                 <select type="text" name="pavut" id="pavut" class="form-control" aria-describedby="basic-addon1">
                 <option value="0">Ei</option>
 				<option value="1">Vähän</option>
@@ -61,7 +65,7 @@ if(isset($output)) { echo $output; }  // ouput for dbconnect.php database connec
         </div>
 		
 		<div class="input-group">
-                <span class="input-group-addon inputid" id="basic-addon1">Ruis</span>
+                <span class="input-group-addon inputid" id="basic-addon1" onclick="fpChart('ruis')">Ruis</span>
                 <select type="text" name="ruis" id="ruis" class="form-control" aria-describedby="basic-addon1">
                 <option value="0">Ei</option>
 				<option value="1">Vähän</option>
@@ -71,7 +75,7 @@ if(isset($output)) { echo $output; }  // ouput for dbconnect.php database connec
         </div>
 		
 		<div class="input-group">
-                <span class="input-group-addon inputid" id="basic-addon1">Tulinen (chili)</span>
+                <span class="input-group-addon inputid" id="basic-addon1"  onclick="fpChart('chili')">Tulinen (chili)</span>
                 <select type="text" name="chili" id="chili" class="form-control" aria-describedby="basic-addon1">
                 <option value="0">Ei</option>
 				<option value="1">Vähän</option>
@@ -87,13 +91,24 @@ if(isset($output)) { echo $output; }  // ouput for dbconnect.php database connec
 
         </form>
     </div>
-	<div class="col-md-6"></div>
+        </div>
+    </div>
+	<div class="col-md-6">
+        <div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Edelliset 30 päivää</h3>
+  </div>
+  <div class="panel-body" id="indexpanel">
+        
+    <div id="chart_div"></div>
+    </div>
+        </div>
 
 </main>
 <?php include('footer.php'); ?>
 
 </div><!-- end .container -->
 <?php include('footer-scripts.php'); ?>
-
+<script src="js/gchart.js"></script>
 </body>
 </html>
