@@ -32,13 +32,31 @@ div.input-group {
     text-align: center;
 }
 
+
 /* outputchart */
-#chartcontainer div {
+.line {
     text-align: right;
     color: white;
-    height: 10px;
+    height: 20px;
     padding: 0px;
     vertical-align: middle;
     font-size: 6px;
 }
 
+#chartcontainer {
+    visibility: hidden;
+}
+
+.linedate {
+    display: inline-block;
+    float: left;
+}
+
+.linemouseon {
+    text-align: right;
+    height: 30px;
+    color: white;
+    background-color: #993071;
+    padding: 5px;
+    font-size: medium;
+}
