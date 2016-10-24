@@ -40,6 +40,10 @@ div.input-group {
 /* outputchart */
 #chartcontainer div {
     text-align: right;
-    color: #FFF;
+    color: white;
+    height: 10px;
+    padding: 0px;
+    vertical-align: middle;
+    font-size: 6px;
 }
 
