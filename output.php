@@ -158,7 +158,10 @@ include('head.php');
       
     </div>
     <div class="col-md-6">
-    <div class="panel panel-default" id="chartcontainer">
+    <div class="panel panel-default" id="chartpanel">
+        <div class="panel-heading" id="chartpanelheader"></div>
+        <div class="panel-body" id="chartcontainer">
+        </div>
     </div>
     </div>
 

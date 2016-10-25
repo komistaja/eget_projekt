@@ -27,11 +27,7 @@ function ainesclick(ing) {
     
     var div = document.createElement("div");
     var arrLen = jsArrayReverse.length - 1;
-    div.innerHTML = '<h3 class="panel-title">' + ingName(ing) + 'ajalta ' + js_array[arrLen]['date'] + ' - ' + js_array[0]['date'] + '</h3>';
-    div.setAttribute("class", "panel-default");
-    div.setAttribute("class", "panel-heading");
-    
-    document.getElementById("chartcontainer").appendChild(div);
+    document.getElementById('chartpanelheader').innerHTML = '<h3 class="panel-title">' + ingName(ing) + 'ajalta ' + js_array[arrLen]['date'] + ' - ' + js_array[0]['date'] + '</h3>';
     
     // creates div rows for table
     var i = 0;
@@ -42,6 +38,10 @@ function ainesclick(ing) {
         div.setAttribute("onmouseover", "lineMouseOver(this)");
         div.setAttribute("onmouseout", "lineMouseOut(this)");
         div.setAttribute("class", "line");
+        
+        var inDiv = div.getElementsByTagName('div');
+        inDiv[0].style.visibility = "hidden";
+        inDiv[1].style.visibility = "hidden";
         
         document.getElementById("chartcontainer").appendChild(div);
         i++;
@@ -62,7 +62,6 @@ function ainesclick(ing) {
         if(chartdiv[i].innerHTML == "0") {
             chartdiv[i].style.color = "white";
         }
-       // chartdiv[i].style.backgroundColor = "#305899";
         i++;
     }
 }
@@ -72,12 +71,19 @@ function lineMouseOver(line) {
     var lineDiv = line.getElementsByTagName("div");
     line.style.width = lineDiv[1].innerHTML * 120 + "px";
     line.setAttribute("class", "linemouseon");
+    
+    var inDiv = line.getElementsByTagName("div");
+    inDiv[0].style.visibility = "visible";
+    inDiv[1].style.visibility = "visible";
 }
 
 function lineMouseOut(line) {
     var lineDiv = line.getElementsByTagName("div");
     line.style.width = lineDiv[1].innerHTML * 100 + "px";
     line.setAttribute("class", "line");
+    var inDiv = line.getElementsByTagName("div");
+    inDiv[0].style.visibility = "hidden";
+    inDiv[1].style.visibility = "hidden";
 }
 
 

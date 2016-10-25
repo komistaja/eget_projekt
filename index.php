@@ -25,7 +25,8 @@ if(isset($output)) { echo $output; }  // ouput for dbconnect.php database connec
         <div class="input-group">
             <span class="input-group-addon" id="basic-addon1">Päivämäärä</span>
             <input id="date" name="date" type="date" class="form-control" value="<?php echo date('Y-m-d'); ?>" >
-            <span class="input-group-addon" id="basic-addon1">Olo</span>
+            
+            <span class="input-group-addon" id="basic-addon1">Vointi</span>
                 <select type="text" name="fiilis" id="fiilis" class="form-control" aria-describedby="basic-addon1">
                 <option value="1">Hyvä</option>
 				<option value="2">Ok</option>
@@ -35,7 +36,7 @@ if(isset($output)) { echo $output; }  // ouput for dbconnect.php database connec
         </div>
        
 		<div class="input-group">
-                <span class="input-group-addon inputid" id="basic-addon1" onclick="fpChart('vehna')">Vehnä</span>
+                <span class="input-group-btn" id="basic-addon1" onclick="fpChart('vehna')"><button class="btn btn-default inputid" type="button">Vehnä</button></span>
                 <select type="text" name="vehna" id="vehna" class="form-control" aria-describedby="basic-addon1">
                 <option value="0">Ei</option>
 				<option value="1">Vähän</option>
@@ -45,7 +46,7 @@ if(isset($output)) { echo $output; }  // ouput for dbconnect.php database connec
         </div>
 		
 		<div class="input-group">
-                <span class="input-group-addon inputid" id="basic-addon1" onclick="fpChart('soija')">Soijarouhe</span>
+                <span class="input-group-btn" id="basic-addon1" onclick="fpChart('soija')"><button class="btn btn-default inputid" type="button">Soijarouhe</button></span>
                 <select type="text" name="soija" id="soija" class="form-control" aria-describedby="basic-addon1">
                 <option value="0">Ei</option>
 				<option value="1">Vähän</option>
@@ -55,7 +56,7 @@ if(isset($output)) { echo $output; }  // ouput for dbconnect.php database connec
         </div>
 		
 		<div class="input-group">
-                <span class="input-group-addon inputid" id="basic-addon1"  onclick="fpChart('pavut')">Pavut/herneet</span>
+                <span class="input-group-btn" id="basic-addon1"  onclick="fpChart('pavut')"><button class="btn btn-default inputid" type="button">Pavut/herneet</button></span>
                 <select type="text" name="pavut" id="pavut" class="form-control" aria-describedby="basic-addon1">
                 <option value="0">Ei</option>
 				<option value="1">Vähän</option>
@@ -65,7 +66,7 @@ if(isset($output)) { echo $output; }  // ouput for dbconnect.php database connec
         </div>
 		
 		<div class="input-group">
-                <span class="input-group-addon inputid" id="basic-addon1" onclick="fpChart('ruis')">Ruis</span>
+                <span class="input-group-btn" id="basic-addon1" onclick="fpChart('ruis')"><button class="btn btn-default inputid" type="button">Ruis</button></span>
                 <select type="text" name="ruis" id="ruis" class="form-control" aria-describedby="basic-addon1">
                 <option value="0">Ei</option>
 				<option value="1">Vähän</option>
@@ -75,7 +76,7 @@ if(isset($output)) { echo $output; }  // ouput for dbconnect.php database connec
         </div>
 		
 		<div class="input-group">
-                <span class="input-group-addon inputid" id="basic-addon1"  onclick="fpChart('chili')">Tulinen (chili)</span>
+                <span class="input-group-btn" id="basic-addon1"  onclick="fpChart('chili')"><button class="btn btn-default inputid" type="button">Chili ym. tuliset</button></span>
                 <select type="text" name="chili" id="chili" class="form-control" aria-describedby="basic-addon1">
                 <option value="0">Ei</option>
 				<option value="1">Vähän</option>
