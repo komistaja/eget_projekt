@@ -69,12 +69,12 @@ include('head.php');
     <table class="table">
         <!-- print values from output.php querys -->
 	<tr>
-		<th onclick="ainesclick('feel')">Vointi</th>
-		<th>Soijarouhe</th>
-		<th>Vehnä</th>
-		<th>Pavut</th>
-		<th>Ruis</th>
-		<th>Chili</th>
+        <th class="thbutton btn btn-default" onclick="ainesclick('feel', this)">Vointi</th>
+        <th class="thbutton btn btn-default" onclick="ainesclick('soija', this)">Soijarouhe</th>
+        <th class="thbutton btn btn-default" onclick="ainesclick('vehna', this)">Vehnä</th>
+        <th class="thbutton btn btn-default" onclick="ainesclick('pavut', this)">Pavut</th>
+        <th class="thbutton btn btn-default" onclick="ainesclick('ruis', this)">Ruis</th>
+        <th class="thbutton btn btn-default" onclick="ainesclick('chili', this)">Chili</th>
 	</tr>
 	<tr>
 		

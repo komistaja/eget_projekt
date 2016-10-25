@@ -18,10 +18,20 @@ function ingName(input) { // returns ingredient realname from databasevalue
     if(input == 'feel') { return 'Vointi '; }
 }
 
-// function for onclick chart 2
+// function for onclick
 var jsArrayReverse = js_array.reverse();
 ainesclick('feel');
-function ainesclick(ing) {
+function ainesclick(ing, ele) {
+    //set button active status
+    console.log(ele);
+    var th = document.getElementsByClassName("thbutton");
+    var i = 0;
+    while(i < th.length) {
+        th[i].setAttribute("class", "thbutton btn btn-default");
+        i++;
+    }
+    ele.setAttribute("class", "thbutton btn btn-default active")
+    
     document.getElementById("chartcontainer").innerHTML = ''; // empty container
     document.getElementById("chartcontainer").style.visibility = "visible";
     

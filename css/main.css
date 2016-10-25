@@ -66,3 +66,7 @@ div.input-group {
     padding: 5px;
     font-size: medium;
 }
+
+.thbutton {
+    display: table-cell;
+}
