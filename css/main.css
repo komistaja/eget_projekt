@@ -67,14 +67,15 @@ div.input-group {
     font-size: medium;
 }
 
+
+/* output.php buttons */
+
 .table .thbutton {
     padding: 0px;
     border-top: 0px;
     border-bottom: 0px;
 }
 
-
-/* output.php buttons */
 .outputbtn {
     
     color: #333;
@@ -83,7 +84,6 @@ div.input-group {
     border-radius: 0px;
     width: 100%;
     border-color: #ccc;
-    
 }
 
  #firstob.outputbtn {

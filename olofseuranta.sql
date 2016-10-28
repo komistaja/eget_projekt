@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 22, 2016 at 07:51 AM
+-- Generation Time: Oct 28, 2016 at 10:10 AM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 7.0.8
 
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `olofseuranta`
 --
+CREATE DATABASE IF NOT EXISTS `olofseuranta` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `olofseuranta`;
 
 -- --------------------------------------------------------
 
@@ -65,7 +67,13 @@ REPLACE INTO `feel` (`date`, `feel`) VALUES
 ('2016-10-17', 2),
 ('2016-10-18', 2),
 ('2016-10-19', 3),
-('2016-10-20', 2);
+('2016-10-20', 2),
+('2016-10-21', 2),
+('2016-10-22', 1),
+('2016-10-23', 3),
+('2016-10-24', 3),
+('2016-10-25', 3),
+('2016-10-26', 3);
 
 -- --------------------------------------------------------
 
@@ -138,7 +146,13 @@ REPLACE INTO `jannyholm` (`date`, `vehna`, `soija`, `pavut`, `ruis`, `chili`) VA
 ('2016-10-17', 2, 3, 2, 0, 1),
 ('2016-10-18', 3, 2, 2, 2, 2),
 ('2016-10-19', 0, 0, 3, 2, 2),
-('2016-10-20', 2, 0, 0, 2, 1);
+('2016-10-20', 2, 0, 0, 2, 1),
+('2016-10-21', 2, 2, 1, 2, 0),
+('2016-10-22', 2, 0, 0, 1, 0),
+('2016-10-23', 2, 0, 1, 2, 1),
+('2016-10-24', 1, 0, 0, 3, 1),
+('2016-10-25', 2, 2, 1, 2, 0),
+('2016-10-26', 2, 0, 2, 2, 0);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

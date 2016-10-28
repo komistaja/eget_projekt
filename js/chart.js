@@ -94,6 +94,3 @@ function lineMouseOut(line) {
     inDiv[0].style.visibility = "hidden";
     inDiv[1].style.visibility = "hidden";
 }
-
-
-console.log(js_array);
