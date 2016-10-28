@@ -67,14 +67,14 @@ include('head.php');
   </div>
   <div class="panel-body">
     <table class="table">
-        <!-- print values from output.php querys -->
+        <!-- print values from output.php queries -->
 	<tr>
-        <th class="thbutton btn btn-default" onclick="ainesclick('feel', this)">Vointi</th>
-        <th class="thbutton btn btn-default" onclick="ainesclick('soija', this)">Soijarouhe</th>
-        <th class="thbutton btn btn-default" onclick="ainesclick('vehna', this)">Vehnä</th>
-        <th class="thbutton btn btn-default" onclick="ainesclick('pavut', this)">Pavut</th>
-        <th class="thbutton btn btn-default" onclick="ainesclick('ruis', this)">Ruis</th>
-        <th class="thbutton btn btn-default" onclick="ainesclick('chili', this)">Chili</th>
+        <th class="thbutton"><button class="btn btn-default outputbtn" id="firstob" onclick="ainesclick('feel', this)" >Vointi</button></th>
+        <th class="thbutton"><button class="btn btn-default outputbtn" onclick="ainesclick('soija', this)">Soijarouhe</button></th>
+        <th class="thbutton"><button class="btn btn-default outputbtn" onclick="ainesclick('vehna', this)">Vehnä</button></th>
+        <th class="thbutton"><button class="btn btn-default outputbtn" onclick="ainesclick('pavut', this)">Pavut</button></th>
+        <th class="thbutton"><button class="btn btn-default outputbtn" onclick="ainesclick('ruis', this)">Ruis</button></th>
+        <th class="thbutton"><button class="btn btn-default outputbtn" id="lastob" onclick="ainesclick('chili', this)">Chili</button></th>
 	</tr>
 	<tr>
 		

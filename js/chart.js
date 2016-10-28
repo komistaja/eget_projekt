@@ -20,17 +20,16 @@ function ingName(input) { // returns ingredient realname from databasevalue
 
 // function for onclick
 var jsArrayReverse = js_array.reverse();
-ainesclick('feel');
 function ainesclick(ing, ele) {
     //set button active status
     console.log(ele);
-    var th = document.getElementsByClassName("thbutton");
+    var th = document.getElementsByClassName("outputbtn");
     var i = 0;
     while(i < th.length) {
-        th[i].setAttribute("class", "thbutton btn btn-default");
+        th[i].setAttribute("class", "outputbtn btn btn-default");
         i++;
     }
-    ele.setAttribute("class", "thbutton btn btn-default active")
+    ele.setAttribute("class", "outputbtn btn btn-default active")
     
     document.getElementById("chartcontainer").innerHTML = ''; // empty container
     document.getElementById("chartcontainer").style.visibility = "visible";

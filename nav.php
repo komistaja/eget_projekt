@@ -1,8 +1,8 @@
 <nav class="navbar navbar-default navbar-static-top">
         <div class="container-fluid">
             <div class="navbar-header">
-            <a class="navbar-brand" href="#">
-            OLOFIN SEURANTA
+            <a href="index.php">
+            <img src="img/logo.png">
             </a>
             </div>
             <ul class="nav navbar-nav navbar-right">
