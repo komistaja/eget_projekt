@@ -67,14 +67,14 @@ include('head.php');
   </div>
   <div class="panel-body">
     <table class="table">
-        <!-- print values from output.php querys -->
+        <!-- print values from output.php queries -->
 	<tr>
-		<th onclick="ainesclick('feel')">Vointi</th>
-		<th>Soijarouhe</th>
-		<th>Vehnä</th>
-		<th>Pavut</th>
-		<th>Ruis</th>
-		<th>Chili</th>
+        <th class="thbutton"><button class="btn btn-default outputbtn" id="firstob" onclick="ainesclick('feel', this)" >Vointi</button></th>
+        <th class="thbutton"><button class="btn btn-default outputbtn" onclick="ainesclick('soija', this)">Soijarouhe</button></th>
+        <th class="thbutton"><button class="btn btn-default outputbtn" onclick="ainesclick('vehna', this)">Vehnä</button></th>
+        <th class="thbutton"><button class="btn btn-default outputbtn" onclick="ainesclick('pavut', this)">Pavut</button></th>
+        <th class="thbutton"><button class="btn btn-default outputbtn" onclick="ainesclick('ruis', this)">Ruis</button></th>
+        <th class="thbutton"><button class="btn btn-default outputbtn" id="lastob" onclick="ainesclick('chili', this)">Chili</button></th>
 	</tr>
 	<tr>
 		
@@ -158,7 +158,10 @@ include('head.php');
       
     </div>
     <div class="col-md-6">
-    <div class="panel panel-default" id="chartcontainer">
+    <div class="panel panel-default" id="chartpanel">
+        <div class="panel-heading" id="chartpanelheader"></div>
+        <div class="panel-body" id="chartcontainer">
+        </div>
     </div>
     </div>
 
